@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: cmr-api
+data:
+  SPRING_DATASOURCE_URL: "jdbc:mysql://mysql-service:3306/cmr_db?useSSL=false&allowPublicKeyRetrieval=true"
+  SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
+  SPRING_JPA_SHOW_SQL: "true"
+  MYSQL_DATABASE: "cmr_db"
+  DB_PORT: "3306"

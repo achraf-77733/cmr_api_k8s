@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: cmr-api
+  labels:
+    app: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      imagePullSecrets:              
+      - name: dockerhub-secret
+      containers:
+      - name: api
+        image: achrafb8h/repo_images_cmr:sha-963154a
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: api-secret
+        ports:
+        - containerPort: 9099
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
