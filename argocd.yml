@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cmr-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/achraf-77733/cmr_api_k8s.git
+    targetRevision: main
+    path: . 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cmr-api
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
