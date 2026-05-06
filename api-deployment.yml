@@ -19,7 +19,7 @@ spec:
       - name: dockerhub-secret
       containers:
       - name: api
-        image: achrafb8h/repo_images_cmr:sha-c209011c59b0ea12cf4843a5e2c3c448ed25dd84
+        image: achrafb8h/repo_images_cmr:sha-ad95342
         envFrom:
         - configMapRef:
             name: app-config
